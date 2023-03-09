@@ -1,0 +1,177 @@
+<! DOCTYPE html>  
+<html>  
+<head>  
+  <meta charset = "UTF-8">  
+  <meta name = "viewport" content = "width=device-width, initial-scale=1.0">  
+  <meta http-equiv = "X-UA-Compatible" content = "ie=edge">  
+  <title> Example of QR Code Generator </title>  
+<link rel = "stylesheet" href =  
+"https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />  
+<style>  
+    .qr-code {  
+    max-width: 200px;  
+    margin: 10px;  
+    }  
+    body {  
+  background-color: #555;  
+  justify-content: center;  
+  font-family: 'VT323', monospace;  
+  font-size: 1.5rem;  
+ color: black;  
+  margin: 20px;  
+   text-align: center;   
+}  
+h1 {  
+  font-weight: normal;  
+  font-size: 40px;  
+  font-weight: normal;  
+  text-transform: uppercase;  
+  text-align: center;   
+}  
+h3 {   
+text-align: center;   
+color: #46a294;   
+font-size: 20px;   
+width: 100%;  
+margin:0;   
+position: relative;   
+font-weight: 400;   
+}  
+h2 {   
+text-align: center;   
+color: #46a294;   
+font-size: 28px;   
+width: 100%;  
+ margin-left:8px;   
+position: relative;   
+line-height: 58px;   
+font-weight: 400; 
+text-shadow: 4px 8px 16px aqua;  
+}  
+h2:before {   
+content: " ";   
+position: absolute;   
+left: 50%;   
+bottom: 0;   
+width: 100px;   
+height: 2px;  
+font-weight: bold;  
+ background-color: #2079df;   
+margin-left: -50px;  
+ } 
+  input{
+    margin-top:-8%;
+  height:45px;
+  width:40%;
+  caret-color: #2079df;
+  caret-shape: bar;
+ }
+ input:hover{
+  box-shadow: 4px 8px 16px aqua;
+ } 
+ input:focus{
+  border:4px solid transparent;
+  background: linear-gradient(#FFFFFF,#FFFFFF) padding-box ,linear-gradient(to right ,green ,aqua)border-box;
+ }
+ ::placeholder{
+  font-size: 2.0rem;
+ }
+ 
+.bot{
+  margin:70px;
+  margin-left: 8%;
+  height: 45px;
+  width: 20%;
+
+  font-family: sans-serif;
+  margin-right: 25px;
+  border:2px solid transparent;
+  background: linear-gradient(black,black) padding-box ,linear-gradient(to right ,aqua ,blue);
+  text-align: center;
+ }
+   label{
+  color:#FFFFFF;
+  margin-top: 10px;
+  
+ }
+button.center-block { 
+  margin-top: -20px; 
+  position: absolute;
+  top:100%;
+  left:30%; 
+
+  display: block;  
+  width: 20%;  
+  line-height: 2em;  
+  background: rgba(114,212,202,1);  
+  border-radius: 5px;  
+  border: 0;  
+  border-top: 1px solid #B2ECE6;  
+  box-shadow: 0 0 0 1px #46A294, 0 2px 2px #808389;  
+  color: #FFFFFF;  
+  font-size: 1.5em;  
+  text-align: center;  
+  text-shadow: 0 1px 2px #21756A;  
+}  
+button.center-block:hover {  
+ background: linear-gradient(to bottom, rgba(107,198,186,1) 0%,rgba(57,175,154,1) 100%);    
+}  
+button.center-block:active {  
+  box-shadow: inset 0 0 5px #000;  
+  background: linear-gradient(to bottom, rgba(57,175,154,1) 0%,rgba(107,198,186,1) 100%);   
+}  
+button.center-block:focus {  
+    outline: none;  
+    border-color: green;  
+}  
+</style>  
+</head>  
+<body>  
+ 
+        <h2> QR Code Generator </h2>  
+<div class = "container-fluid">  
+    <div class = "text-center">  
+    <img src =  
+"https://chart.googleapis.com/chart?cht=qr&chl=Hello+World&chs=160x160&chld=L|0"  
+        class = "qr-code img-thumbnail img-responsive" />  
+    </div>  
+    <div>
+      <div class="bot">
+        <label for="content">Enter your text &nbsp;  &rarr;</label>
+      </div>
+      
+        <input type = "text" size = "40"  
+            maxlength = "100"  
+            id = "content" placeholder = "Enter your text that convert to qr code" />  
+        </div>  
+    </div>  
+    <div class = "form-group">  
+        <div class = "col-sm-offset-2 col-sm-10">  
+        <button type = "button" class =  
+            "center-block" id = "generate">  
+            Generate  
+        </button>  
+        </div>  
+    </div>  
+    </div>  
+</div>  
+<script src =  
+    "https://code.jquery.com/jquery-3.5.1.js">  
+</script>  
+<script>  
+    function htmlEncode(value) {  
+    return $('<div/>').text(value)  
+        .html();  
+    }  
+    $(function () {  
+    $('#generate').click(function () {        
+        let finalURL =  
+'https://chart.googleapis.com/chart?cht=qr&chl=' +  
+        htmlEncode($('#content').val()) +  
+        '&chs=160x160&chld=L|0'   
+        $('.qr-code').attr('src', finalURL);  
+    });  
+    });  
+</script>  
+</body>  
+</html>  
